@@ -1,0 +1,361 @@
+/* Deck · transitions — deck.js puts .is-leaving on the old slide for OUT_MS (or its data-out-ms), then .is-entering
+   on the new one (IN_MS, or data-in-ms); content blocks carry .fx-el and --stagger, the root carries --dir.
+   Only animate children: never opacity/visibility on .slide, never toggle will-change (black/blank frames in Electron). */
+
+/* default: ink fade */
+.slide.is-leaving .fx-el { animation: fxOut 0.36s ease-in both; }
+.slide.is-entering .fx-el { animation: fxIn var(--m-fade) ease-out both; animation-delay: var(--stagger, 0ms); }
+@keyframes fxOut { to { opacity: 0; } }
+@keyframes fxIn { from { opacity: 0; } }
+
+/* the book itself never fades: spreads hand over instantly and the page turn does the work */
+.slide.book-cover.is-leaving .fx-el,
+.slide.spread.is-leaving .fx-el,
+.slide.spread.is-entering .fx-el { animation: none; }
+
+/* ===== cover → open book =====
+   The next slide starts as the same closed book (its .leaf front is a copy of the cover, filled by js/book.js):
+   the book slides right until the spine is centred, then the cover swings over the spine and its back (a copy of
+   the left half) lands as the left page. Left half + ribbon appear at the end. */
+.slide.opens-cover.is-entering .book-open { animation: bookSlide var(--m-open) both; }
+
+.leaf {
+  position: absolute;
+  left: 50%; top: 0; bottom: 0;
+  width: 50%;
+  z-index: 5;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  visibility: hidden;
+  pointer-events: none;
+}
+.leaf-face { position: absolute; inset: 0; backface-visibility: hidden; }
+.leaf-face.back { transform: rotateY(180deg); }
+.leaf-face::after { content: ""; position: absolute; inset: 0; opacity: 0; pointer-events: none; }
+.leaf-face.front::after { background: linear-gradient(90deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.65)); }
+.leaf-face.back::after { background: linear-gradient(270deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.65)); }
+
+.slide.opens-cover.is-entering .leaf:not(.turn) { animation: leafOpen var(--m-open) both; }
+.slide.opens-cover.is-entering .leaf:not(.turn) .leaf-face.front::after { animation: frontDark var(--m-open) linear both; }
+.slide.opens-cover.is-entering .leaf:not(.turn) .leaf-face.back::after { animation: backLight var(--m-open) linear both; }
+.slide.opens-cover.is-entering .half.l { animation: atEnd var(--m-open) both; }
+/* the bookmark ribbon drops down the spine once the book is open, and slides back up when the page turns */
+.slide.opens-cover.is-entering .ribbon { animation: ribbonDown 0.7s cubic-bezier(0.2, 0.8, 0.3, 1) var(--m-open) backwards; }
+html[style*="--dir: -1"] .slide.opens-cover.is-entering .ribbon { animation: ribbonDown 0.7s cubic-bezier(0.2, 0.8, 0.3, 1) var(--m-turn) backwards; }
+.book-open > .ribbon.spine-out { animation: ribbonUp 0.55s cubic-bezier(0.5, 0, 0.75, 0.4) both !important; }
+@keyframes ribbonDown { from { clip-path: polygon(0 0, 100% 0, 100% 0, 50% 0, 0 0); } }
+@keyframes ribbonUp { to { clip-path: polygon(0 0, 100% 0, 100% 0, 50% 0, 0 0); } }
+
+@keyframes bookSlide {
+  0% { transform: translateX(var(--closed-shift)); animation-timing-function: cubic-bezier(0.5, 0, 0.3, 1); }
+  30%, 100% { transform: none; }
+}
+@keyframes leafOpen {
+  0% { visibility: visible; transform: rotateY(0deg); }
+  30% { transform: rotateY(0deg); animation-timing-function: cubic-bezier(0.55, 0.05, 0.3, 1); }
+  99.9% { visibility: visible; }
+  100% { visibility: hidden; transform: rotateY(-180deg); }
+}
+@keyframes frontDark { 0%, 30% { opacity: 0; } 62% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes backLight { 0%, 62% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes atEnd { 0%, 99.9% { visibility: hidden; } 100% { visibility: visible; } }
+
+/* coming back to the open book from a later slide: no replay */
+html[style*="--dir: -1"] .slide.opens-cover.is-entering .book-open,
+html[style*="--dir: -1"] .slide.opens-cover.is-entering .leaf:not(.turn),
+html[style*="--dir: -1"] .slide.opens-cover.is-entering .leaf:not(.turn) .leaf-face::after,
+html[style*="--dir: -1"] .slide.opens-cover.is-entering .half.l { animation: none; }
+
+/* ===== page turn between spreads (js/book.js builds .leaf.turn + .turn-under) =====
+   Forward: the old right page lifts off the spine and lands on the left, its back showing the new left page;
+   the new right page is already lying underneath. Backward mirrors it. Copies never animate. */
+.leaf .leaf-face *, .turn-under * { animation: none !important; }
+.turn-under { z-index: 4; visibility: hidden; pointer-events: none; }
+.leaf.turn.is-back { left: 0; transform-origin: right center; }
+
+.slide.is-entering .turn-under { animation: untilEnd var(--m-turn) both; }
+.slide.is-entering .leaf.turn { animation: turnFwd var(--m-turn) cubic-bezier(0.45, 0.05, 0.35, 1) both; }
+.slide.is-entering .leaf.turn.is-back { animation-name: turnBack; }
+.slide.is-entering .leaf.turn .leaf-face.front::after { animation: turnDark var(--m-turn) linear both; }
+.slide.is-entering .leaf.turn .leaf-face.back::after { animation: turnLight var(--m-turn) linear both; }
+
+@keyframes untilEnd { 0%, 99.9% { visibility: visible; } 100% { visibility: hidden; } }
+@keyframes turnFwd {
+  0% { visibility: visible; transform: rotateY(0deg); }
+  99.9% { visibility: visible; }
+  100% { visibility: hidden; transform: rotateY(-180deg); }
+}
+@keyframes turnBack {
+  0% { visibility: visible; transform: rotateY(0deg); }
+  99.9% { visibility: visible; }
+  100% { visibility: hidden; transform: rotateY(180deg); }
+}
+/* a light shade that peaks while the leaf stands upright and is gone before it lands, so the copy and the real
+   page match at the hand-over */
+@keyframes turnDark { 0% { opacity: 0; } 50%, 100% { opacity: 0.3; } }
+@keyframes turnLight { 0%, 50% { opacity: 0.3; } 80%, 100% { opacity: 0; } }
+
+/* ===== after the page lands (forward only) =====
+   Things the leaf's back face carried in their "before" state, so nothing blinks when the real page takes over. */
+.leaf .mark { background-size: 0% 100%; }
+.leaf .draw { stroke-dashoffset: 1; }
+.leaf .fill-in { opacity: 0; }
+
+html[style*="--dir: 1"] .slide.is-entering .mark { animation: markSweep 0.7s ease-out calc(var(--m-turn) + 0.15s) backwards; }
+html[style*="--dir: 1"] .slide.is-entering .half.r .chips li {
+  animation: chipIn 0.45s cubic-bezier(0.3, 1.6, 0.5, 1) backwards;
+  animation-delay: calc(var(--m-turn) * 0.55 + var(--k, 0) * 90ms);
+}
+.chips li:nth-child(2) { --k: 1; }
+.chips li:nth-child(3) { --k: 2; }
+.chips li:nth-child(4) { --k: 3; }
+/* banner: unrolls from the middle like a scroll (a roll rides each edge), then its tails fold out from behind */
+.slide.spread.is-entering .banner-body { animation: unroll 0.65s cubic-bezier(0.3, 0.7, 0.3, 1) var(--m-turn) backwards; }
+.slide.spread.is-entering .banner .roll.l { animation: rollL 0.65s cubic-bezier(0.3, 0.7, 0.3, 1) var(--m-turn) backwards; }
+.slide.spread.is-entering .banner .roll.r { animation: rollR 0.65s cubic-bezier(0.3, 0.7, 0.3, 1) var(--m-turn) backwards; }
+.slide.spread.is-entering .banner::before { transform-origin: right center; animation: tailL 0.45s cubic-bezier(0.3, 1.4, 0.5, 1) calc(var(--m-turn) + 0.5s) backwards; }
+.slide.spread.is-entering .banner::after { transform-origin: left center; animation: tailR 0.45s cubic-bezier(0.3, 1.4, 0.5, 1) calc(var(--m-turn) + 0.5s) backwards; }
+.slide.spread.is-entering .banner-body > * { animation: fxIn 0.4s ease-out calc(var(--m-turn) + 0.3s) backwards; }
+html[style*="--dir: 1"] .slide.is-entering .draw { animation: draw 1.4s ease-in-out calc(var(--m-turn) + 0.1s) backwards; }
+html[style*="--dir: 1"] .slide.is-entering .fill-in { animation: fxIn 0.6s ease-out calc(var(--m-turn) + 1.1s) backwards; }
+html[style*="--dir: 1"] .slide.is-entering .tabs i { animation: tabOut 0.5s cubic-bezier(0.3, 1.5, 0.5, 1) backwards; animation-delay: calc(var(--m-turn) * 0.6 + var(--k, 0) * 110ms); }
+.tabs i:nth-child(2) { --k: 1; }
+.tabs i:nth-child(3) { --k: 2; }
+.tabs i:nth-child(4) { --k: 3; }
+
+@keyframes markSweep { from { background-size: 0% 100%; } }
+@keyframes chipIn { from { opacity: 0; transform: translateY(calc(10 * var(--px))) scale(0.8); } }
+@keyframes draw { from { stroke-dashoffset: 1; } }
+@keyframes tabOut { from { transform: translateX(calc(-30 * var(--px))); } }
+
+/* chapter openers: once the page is down the thread's labels and knots show first, then every strand draws at
+   once; the right page's chains, stamps and stairs come in one by one (the left page arrives on the leaf, already
+   complete) */
+html[style*="--dir: 1"] .slide.is-entering .thread .fill-in { animation: fxIn 0.4s ease-out calc(var(--m-turn) + 0.05s) backwards; }
+html[style*="--dir: 1"] .slide.is-entering .thread .draw { animation: draw 1.6s ease-in-out calc(var(--m-turn) + 0.45s) backwards; }
+.slide.spread.is-entering .seal { animation: sealDrop 0.55s cubic-bezier(0.3, 1.4, 0.5, 1) var(--m-turn) backwards; }
+.slide.spread.keeps-seal.is-entering .seal { animation: none; }
+html[style*="--dir: 1"] .slide.is-entering .half.r :is(.path, .arc) li { animation: fxIn 0.45s ease-out backwards; animation-delay: calc(var(--m-turn) * 0.6 + var(--k, 0) * 140ms); }
+html[style*="--dir: 1"] .slide.is-entering .half.r .stamps li { animation: stampIn 0.4s cubic-bezier(0.3, 1.6, 0.5, 1) backwards; animation-delay: calc(var(--m-turn) * 0.6 + var(--k, 0) * 90ms); }
+html[style*="--dir: 1"] .slide.is-entering .half.r .stairs li { transform-origin: bottom; animation: rise 0.5s ease-out backwards; animation-delay: calc(var(--m-turn) * 0.55 + var(--n, 0) * 130ms); }
+:is(.path, .arc, .stamps) li:nth-child(2) { --k: 1; }
+:is(.path, .arc, .stamps) li:nth-child(3) { --k: 2; }
+:is(.path, .arc, .stamps) li:nth-child(4) { --k: 3; }
+:is(.path, .arc, .stamps) li:nth-child(5) { --k: 4; }
+:is(.path, .arc, .stamps) li:nth-child(6) { --k: 5; }
+/* going back, the thread waits for the leaf to land (it only draws itself going forward) */
+html[style*="--dir: -1"] .slide.spread.is-entering .thread { animation: atEnd var(--m-turn) both; }
+/* the old spread's banner / seal / thread, copied in by js/book.js, leave while the page turns */
+.book-open > .spine-out * { animation: none !important; }
+.book-open > .banner.spine-out::before { transform-origin: right center; animation: tailL 0.2s ease-in reverse both !important; }
+.book-open > .banner.spine-out::after { transform-origin: left center; animation: tailR 0.2s ease-in reverse both !important; }
+.book-open > .banner.spine-out .banner-body { animation: unroll 0.45s cubic-bezier(0.3, 0.7, 0.3, 1) 0.15s reverse both !important; }
+.book-open > .banner.spine-out .roll.l { animation: rollL 0.45s cubic-bezier(0.3, 0.7, 0.3, 1) 0.15s reverse both !important; }
+.book-open > .banner.spine-out .roll.r { animation: rollR 0.45s cubic-bezier(0.3, 0.7, 0.3, 1) 0.15s reverse both !important; }
+.book-open > .seal.spine-out { animation: sealUp 0.4s ease-in both !important; }
+.book-open > .thread.spine-out { animation: fxOut 0.4s ease-in both !important; }
+html[style*="--dir: 1"] .slide.is-entering .half.r :is(.why, .merits) li { animation: fxIn 0.45s ease-out backwards; animation-delay: calc(var(--m-turn) * 0.6 + var(--k, 0) * 160ms); }
+:is(.why, .merits) li:nth-child(2) { --k: 1; }
+:is(.why, .merits) li:nth-child(3) { --k: 2; }
+@keyframes sealDrop { from { transform: translateY(-110%); opacity: 0; } }
+@keyframes sealUp { to { transform: translateY(-110%); opacity: 0; } }
+@keyframes unroll { from { clip-path: inset(calc(-40 * var(--px)) 50%); } to { clip-path: inset(calc(-40 * var(--px)) calc(-30 * var(--px))); } }
+/* left/right, not transform: the clip-path above runs on the main thread, a transform would run ahead of it */
+@keyframes rollL {
+  0% { opacity: 0; left: calc(50% - 13 * var(--px)); }
+  4%, 85% { opacity: 1; }
+  100% { opacity: 0; left: calc(-13 * var(--px)); }
+}
+@keyframes rollR {
+  0% { opacity: 0; right: calc(50% - 13 * var(--px)); }
+  4%, 85% { opacity: 1; }
+  100% { opacity: 0; right: calc(-13 * var(--px)); }
+}
+@keyframes tailL { from { opacity: 0; transform: perspective(calc(320 * var(--px))) rotateY(-105deg); } }
+@keyframes tailR { from { opacity: 0; transform: perspective(calc(320 * var(--px))) rotateY(105deg); } }
+@keyframes stampIn { from { opacity: 0; transform: rotate(var(--r, -2deg)) scale(1.5); } }
+@keyframes rise { from { opacity: 0; transform: scaleY(0.2); } }
+
+/* ===== open book → back cover (last slide) =====
+   js/book.js copies the previous spread into .held (left) and the leaf's front (right): the right half swings over
+   the spine, its back (the back cover) lands on the left, then the closed book slides to the centre. */
+.slide.closes-book .book-open { transform: translateX(calc(348 * var(--px))); }
+.slide.closes-book .held { visibility: hidden; }
+.held * { animation: none !important; }
+.slide.closes-book.is-entering .book-open { animation: bookClose var(--m-close) both; }
+.slide.closes-book.is-entering .held { animation: untilEnd var(--m-close) both; }
+.slide.closes-book.is-entering .back-cover { animation: atEnd var(--m-close) both; }
+.slide.closes-book.is-entering .leaf { animation: leafClose var(--m-close) both; }
+.slide.closes-book.is-entering .leaf-face.front::after { animation: closeDark var(--m-close) linear both; }
+.slide.closes-book.is-entering .leaf-face.back::after { animation: closeLight var(--m-close) linear both; }
+@keyframes bookClose {
+  0% { transform: none; }
+  58% { transform: none; animation-timing-function: cubic-bezier(0.5, 0, 0.3, 1); }
+  100% { transform: translateX(calc(348 * var(--px))); }
+}
+@keyframes leafClose {
+  0% { visibility: visible; transform: rotateY(0deg); animation-timing-function: cubic-bezier(0.55, 0.05, 0.3, 1); }
+  55% { transform: rotateY(-180deg); }
+  99.9% { visibility: visible; transform: rotateY(-180deg); }
+  100% { visibility: hidden; transform: rotateY(-180deg); }
+}
+@keyframes closeDark { 0% { opacity: 0; } 27%, 100% { opacity: 1; } }
+@keyframes closeLight { 0%, 27% { opacity: 1; } 55%, 100% { opacity: 0; } }
+
+/* ===== burn and replace (.swap > .panel, the later panels are .step) =====
+   The outgoing panel is eaten from the bottom by a ragged mask; an .ember strip (glowing edge + sparks, injected
+   by js/book.js) rides the same line upward; the new panel inks in behind it. The [data-reveal] rules in deck.css
+   would show every passed step, so these selectors outrank them. Going backwards swaps without fire. */
+.swap { flex: 1; min-height: 0; display: grid; }
+.swap[data-reveal] > .panel {
+  grid-area: 1 / 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  visibility: hidden;
+  opacity: 1;
+  transition: none;
+}
+.swap[data-reveal]:not(.has-current) > .panel:first-child,
+.swap[data-reveal] > .panel.step.is-current { visibility: visible; }
+
+.swap[data-reveal]:not(.is-back) > .panel:has(+ .panel.is-current) {
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 200' preserveAspectRatio='none'%3E%3Cpath d='M0 0H100V103.24L97.5 102.89L95 101.28L92.5 102.33L90 99.19L87.5 101.34L85 102.95L82.5 101.76L80 97.08L77.5 99.16L75 98.09L72.5 100.44L70 101.16L67.5 100.17L65 98.55L62.5 103.42L60 102.82L57.5 101.58L55 100.27L52.5 98.46L50 99.07L47.5 102.94L45 102.9L42.5 102.69L40 101.68L37.5 96.97L35 96.57L32.5 97.4L30 98.55L27.5 99.93L25 99.14L22.5 102.61L20 102.62L17.5 101.99L15 98.05L12.5 96.24L10 97.18L7.5 98.24L5 96.87L2.5 98.31L0 100Z'/%3E%3C/svg%3E") no-repeat 0 0 / 100% 200%;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 200' preserveAspectRatio='none'%3E%3Cpath d='M0 0H100V103.24L97.5 102.89L95 101.28L92.5 102.33L90 99.19L87.5 101.34L85 102.95L82.5 101.76L80 97.08L77.5 99.16L75 98.09L72.5 100.44L70 101.16L67.5 100.17L65 98.55L62.5 103.42L60 102.82L57.5 101.58L55 100.27L52.5 98.46L50 99.07L47.5 102.94L45 102.9L42.5 102.69L40 101.68L37.5 96.97L35 96.57L32.5 97.4L30 98.55L27.5 99.93L25 99.14L22.5 102.61L20 102.62L17.5 101.99L15 98.05L12.5 96.24L10 97.18L7.5 98.24L5 96.87L2.5 98.31L0 100Z'/%3E%3C/svg%3E") no-repeat 0 0 / 100% 200%;
+  animation: burnOut var(--m-burn) linear both;
+}
+.swap[data-reveal]:not(.is-back) > .panel.step.is-current > :not(.ember) { animation: inkIn 0.45s ease-out calc(var(--m-burn) - 0.25s) backwards; }
+.swap[data-reveal]:not(.is-back) > .panel.step.is-current .mark { animation: markSweep 0.5s ease-out calc(var(--m-burn) + 0.2s) backwards; }
+
+/* .erode variant: the picture burns itself (erosion-glow, .is-burnt via the step's data-burn); only the words get
+   the ragged mask, and the next panel shows up once the picture has burnt down, its edges growing back in. */
+.swap.erode[data-reveal]:not(.is-back) > .panel:has(+ .panel.is-current) {
+  -webkit-mask: none;
+  mask: none;
+  animation: untilEnd var(--m-erode) linear both;
+}
+.swap.erode[data-reveal]:not(.is-back) > .panel:has(+ .panel.is-current) > :not(.erosion-glow) {
+  animation: smolder 0.75s ease-in calc(0.1s + var(--k, 0) * 0.12s) both;
+}
+.swap.erode > .panel > .cue { --k: 1; }
+@keyframes smolder {
+  from { opacity: 1; transform: none; filter: drop-shadow(0 0 0 transparent) drop-shadow(0 0 0 transparent) blur(0); }
+  35% { opacity: 1; transform: none; filter: drop-shadow(0 0 calc(3 * var(--px)) var(--gilt-hi)) drop-shadow(0 0 calc(10 * var(--px)) var(--gilt)) blur(0); }
+  to { opacity: 0; transform: translateY(calc(-16 * var(--px))); filter: drop-shadow(0 0 calc(6 * var(--px)) var(--gilt-hi)) drop-shadow(0 0 calc(16 * var(--px)) var(--gilt)) blur(calc(6 * var(--px))); }
+}
+.swap.erode[data-reveal]:not(.is-back) > .panel.step.is-current { animation: fromEnd var(--m-erode) linear both; }
+.swap.erode[data-reveal]:not(.is-back) > .panel.step.is-current > :not(.ember):not(.erosion-glow) { animation: inkIn 0.45s ease-out var(--m-erode) backwards; }
+.swap.erode[data-reveal]:not(.is-back) > .panel.step.is-current .mark { animation: markSweep 0.5s ease-out calc(var(--m-erode) + 0.25s) backwards; }
+@keyframes fromEnd { 0%, 99.9% { visibility: hidden; } 100% { visibility: visible; } }
+
+@keyframes burnOut {
+  from { visibility: visible; -webkit-mask-position: 0 0; mask-position: 0 0; }
+  99.9% { visibility: visible; }
+  to { visibility: hidden; -webkit-mask-position: 0 100%; mask-position: 0 100%; }
+}
+@keyframes inkIn { from { opacity: 0; filter: blur(calc(4 * var(--px))); } }
+
+.ember {
+  position: absolute;
+  z-index: 3;
+  left: calc(-24 * var(--px));
+  right: calc(-24 * var(--px));
+  top: 0;
+  height: 100%;
+  visibility: hidden;
+  pointer-events: none;
+}
+.ember svg {
+  position: absolute;
+  left: 0;
+  top: calc(-40 * var(--px));
+  width: 100%;
+  height: calc(80 * var(--px));
+  overflow: visible;
+}
+.ember svg polyline { fill: none; stroke-linejoin: round; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.ember svg .glow { stroke: #ff6a10; stroke-width: calc(16 * var(--px)); opacity: 0.45; filter: blur(calc(6 * var(--px))); }
+.ember svg .core {
+  stroke: #ffd98a;
+  stroke-width: calc(3.5 * var(--px));
+  filter: drop-shadow(0 0 calc(4 * var(--px)) #ff9a2e) drop-shadow(0 calc(-3 * var(--px)) calc(10 * var(--px)) rgba(255, 110, 20, 0.8));
+}
+.ember::before { /* scorch creeping over the paper just above the flame */
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(-70 * var(--px));
+  height: calc(70 * var(--px));
+  background: linear-gradient(180deg, transparent, rgba(150, 85, 25, 0.22) 60%, rgba(70, 30, 8, 0.5));
+}
+.ember::after { /* smoke stain left behind */
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(4 * var(--px));
+  height: calc(46 * var(--px));
+  background: linear-gradient(180deg, rgba(50, 25, 10, 0.35), transparent);
+}
+.ember i {
+  position: absolute;
+  top: calc(-6 * var(--px));
+  left: calc(var(--x) * 1%);
+  width: calc(6 * var(--px));
+  height: calc(6 * var(--px));
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff3c4, #ffae3d 55%, transparent 72%);
+  opacity: 0;
+}
+.ember i:nth-child(2) { --x: 6; --t: 0.55s; --dx: -12; }
+.ember i:nth-child(3) { --x: 17; --t: 0.7s; --dx: 8; }
+.ember i:nth-child(4) { --x: 28; --t: 0.5s; --dx: -6; }
+.ember i:nth-child(5) { --x: 38; --t: 0.8s; --dx: 14; }
+.ember i:nth-child(6) { --x: 49; --t: 0.6s; --dx: -10; }
+.ember i:nth-child(7) { --x: 60; --t: 0.75s; --dx: 6; }
+.ember i:nth-child(8) { --x: 71; --t: 0.55s; --dx: -14; }
+.ember i:nth-child(9) { --x: 82; --t: 0.7s; --dx: 10; }
+.ember i:nth-child(10) { --x: 91; --t: 0.65s; --dx: -8; }
+.ember i:nth-child(11) { --x: 97; --t: 0.5s; --dx: 12; }
+
+.swap[data-reveal]:not(.is-back) > .panel.step.is-current > .ember { animation: emberRise var(--m-burn) linear both; }
+.swap[data-reveal]:not(.is-back) > .panel.step.is-current > .ember i { animation: spark var(--t) ease-out 3; }
+.swap[data-reveal]:not(.is-back) > .panel.step.is-current > .ember .core { animation: flicker 0.18s steps(2) infinite alternate; }
+@keyframes flicker { to { opacity: 0.72; } }
+
+@keyframes emberRise {
+  0% { visibility: visible; transform: translateY(100%); opacity: 0; }
+  6% { opacity: 1; }
+  90% { opacity: 1; }
+  99.9% { visibility: visible; }
+  100% { visibility: hidden; transform: translateY(0); opacity: 0; }
+}
+@keyframes spark {
+  0% { opacity: 0; transform: translate(0, 0); }
+  20% { opacity: 1; }
+  100% { opacity: 0; transform: translate(calc(var(--dx) * var(--px)), calc(-56 * var(--px))); }
+}
+
+/* ===== gold motes drifting over the stage (js/book.js) ===== */
+.motes { position: absolute; inset: 0; z-index: 20; overflow: hidden; pointer-events: none; }
+.motes i {
+  position: absolute;
+  width: calc(7 * var(--px));
+  height: calc(7 * var(--px));
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 240, 190, 0.95), rgba(255, 200, 100, 0.4) 45%, transparent 70%);
+  opacity: 0;
+  animation: mote var(--d) ease-in-out var(--delay) infinite;
+}
+@keyframes mote {
+  0% { opacity: 0; transform: translate(0, 0) scale(var(--s)); }
+  25% { opacity: 0.8; }
+  75% { opacity: 0.55; }
+  100% { opacity: 0; transform: translate(calc(var(--dx) * var(--px)), calc(var(--dy) * var(--px))) scale(var(--s)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

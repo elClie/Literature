@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Literature</title>
+  <link rel="stylesheet" href="css/fonts.css" />
+  <link rel="stylesheet" href="css/deck.css" />
+  <link rel="stylesheet" href="css/book.css" />
+  <link rel="stylesheet" href="css/fx.css" />
+</head>
+<body>
+  <!-- Slides: one <section class="slide"> each. Steppers: .stepper > .step — → walks the steps before the deck moves on.
+         data-reveal  → later steps stay hidden until reached
+         (no attr)    → all visible, current one lit, click a step to jump
+         step data-focus="id id" → .is-focus on [data-id] elements in the slide, .is-dim on the rest -->
+  <main class="deck" id="deck" tabindex="0">
+
+    <!-- 1 · Bìa -->
+    <section class="slide book-cover active" data-out-ms="0">
+      <div class="cover-face leather">
+        <div class="spine"></div>
+        <div class="gilt-frame"><i></i><i></i><i></i><i></i></div>
+        <div class="cover-content">
+          <p class="cover-group gilt">Nhóm 4</p>
+          <p class="cover-orn gilt">❦</p>
+          <h1 class="gilt"><span class="cover-title">Ngữ văn</span><br /><span class="cover-num">12</span></h1>
+          <div class="cover-rule"><i></i></div>
+          <p class="cover-sub gilt">Nói và nghe</p>
+          <p class="cover-topic">So sánh &amp; đánh giá hai tác phẩm truyện</p>
+          <div class="cover-by">
+            <span>Trình bày</span>
+            <p class="gilt">Lê Đức Đăng Khoa<br />Trần Hoàng Quân</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 · Hai tác phẩm (bìa lật mở ra trang này) -->
+    <section class="slide spread opens-cover" data-in-ms="2400">
+      <div class="book-open">
+        <div class="half l">
+          <div class="board leather"></div>
+          <div class="page l">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content">
+              <p class="runhead">Ngữ văn 12 · Nói và nghe</p>
+              <p class="chapter">Kim Lân</p>
+              <p class="fleuron">❦</p>
+              <h2 class="title"><span class="cap">V</span>ợ nhặt</h2>
+              <p class="source">in trong tập Con chó xấu xí</p>
+              <p class="hook">Một người được <em>nhặt</em><br />về làm vợ.</p>
+              <p class="across">…và cả hai</p>
+            </div>
+          </div>
+        </div>
+        <div class="half r">
+          <div class="board leather"></div>
+          <div class="page r">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content">
+              <p class="runhead">So sánh &amp; đánh giá hai tác phẩm truyện</p>
+              <p class="chapter">Tô Hoài</p>
+              <p class="fleuron">❦</p>
+              <h2 class="title"><span class="cap">V</span>ợ chồng<br />A Phủ</h2>
+              <p class="source">in trong tập Truyện Tây Bắc</p>
+              <p class="hook">Một người bị <em>bắt</em><br />về làm vợ.</p>
+              <p class="across">vẫn muốn sống.</p>
+            </div>
+          </div>
+        </div>
+        <div class="ribbon"></div>
+        <div class="leaf" aria-hidden="true">
+          <div class="leaf-face front cover-face leather" data-from=".book-cover .cover-face"></div>
+          <div class="leaf-face back l" data-from=".opens-cover .half.l"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 · I. Giới thiệu vấn đề so sánh -->
+    <section class="slide spread has-banner">
+      <div class="book-open">
+        <div class="half l">
+          <div class="board leather"></div>
+          <div class="page l">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">I · Giới thiệu vấn đề so sánh</p>
+              <p class="work">Vợ nhặt <span>Kim Lân</span></p>
+              <figure class="photo" style="--h: 196; --w: 520">
+                <img src="img/nan-doi-1945.jpg" alt="Đám đông người đói ngồi chờ trên phố Hà Nội năm 1945" style="object-position: 50% 62%" />
+                <figcaption>Nạn đói Ất Dậu, Hà Nội 1945 · ảnh Võ An Ninh</figcaption>
+              </figure>
+              <p class="lede">Viết về <span class="mark">nạn đói năm 1945</span> và số phận người nông dân nghèo.</p>
+              <p class="label c">Nổi bật</p>
+              <ul class="chips"><li>tình người</li><li>khát vọng sống</li><li>niềm tin vào tương lai</li></ul>
+            </div>
+          </div>
+        </div>
+        <div class="half r">
+          <div class="board leather"></div>
+          <div class="page r">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">I · Giới thiệu vấn đề so sánh</p>
+              <p class="work">Vợ chồng A Phủ <span>Tô Hoài</span></p>
+              <figure class="photo" style="--h: 196; --w: 520; --tilt: 1.2deg">
+                <img src="img/hmong-nhuom-cham.jpg" alt="Phụ nữ H'Mông phơi vải chàm trên sườn núi" style="object-position: 40% 50%" />
+                <figcaption>Phụ nữ H'Mông phơi vải chàm · ảnh exfordy, CC BY</figcaption>
+              </figure>
+              <p class="lede">Viết về <span class="mark">cuộc sống người dân miền núi</span> dưới ách áp bức.</p>
+              <p class="label c">Nổi bật</p>
+              <ul class="chips"><li>sức sống</li><li>khát vọng tự do</li><li>khả năng tự giải phóng</li></ul>
+            </div>
+          </div>
+        </div>
+        <div class="banner" style="--bw: 1060">
+          <div class="banner-body">
+            <p class="gilt">So sánh điểm tương đồng và khác biệt về nội dung và nghệ thuật</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 · I. Khái quát: tác giả, hoàn cảnh, đề tài -->
+    <section class="slide spread">
+      <div class="book-open">
+        <div class="half l">
+          <div class="board leather"></div>
+          <div class="page l">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">I · Khái quát hai tác phẩm</p>
+              <p class="work">Vợ nhặt <span>truyện ngắn</span></p>
+              <div class="author">
+                <div class="medal"><img src="img/kim-lan.jpg" alt="Chân dung nhà văn Kim Lân" style="--pos: 50% 60%" /></div>
+                <div>
+                  <h3>Kim Lân</h3>
+                  <p>1920 – 2007<br />nhà văn của nông thôn<br />và người nông dân</p>
+                </div>
+              </div>
+              <dl class="defs">
+                <div><dt>Hoàn cảnh sáng tác</dt><dd><span class="mark">Nạn đói năm 1945</span>.</dd></div>
+                <div><dt>Đề tài</dt><dd>Cuộc sống của người dân nghèo trong nạn đói năm 1945.</dd></div>
+              </dl>
+            </div>
+          </div>
+        </div>
+        <div class="half r">
+          <div class="board leather"></div>
+          <div class="page r">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">I · Khái quát hai tác phẩm</p>
+              <p class="work">Vợ chồng A Phủ <span>truyện ngắn</span></p>
+              <div class="author">
+                <div class="medal"><img src="img/to-hoai.jpg" alt="Chân dung nhà văn Tô Hoài" style="--pos: 50% 40%" /></div>
+                <div>
+                  <h3>Tô Hoài</h3>
+                  <p>1920 – 2014<br />người đưa miền núi<br />vào trang văn</p>
+                </div>
+              </div>
+              <dl class="defs">
+                <div><dt>Hoàn cảnh sáng tác</dt><dd>Năm 1952, sau <span class="mark">chuyến đi thực tế ở Tây Bắc</span>.</dd></div>
+                <div><dt>Đề tài</dt><dd>Cuộc sống và số phận người dân miền núi Tây Bắc dưới ách áp bức của thực dân.</dd></div>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 · I. Khái quát: cốt truyện, nhân vật (trang phải cháy để kể tiếp) -->
+    <section class="slide spread">
+      <div class="book-open">
+        <div class="half l">
+          <div class="board leather"></div>
+          <div class="page l">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">I · Khái quát hai tác phẩm</p>
+              <p class="work">Vợ nhặt <span>cốt truyện</span></p>
+              <figure class="plate" style="--h: 300; --pos: 50% 66%">
+                <img src="img/vn-ve-nha.jpg" alt="Minh hoạ: Tràng dẫn người vợ nhặt về xóm ngụ cư lúc chiều tà" />
+              </figure>
+              <dl class="defs">
+                <div><dt>Cốt truyện</dt><dd>Giữa nạn đói khủng khiếp, Tràng – một người dân nghèo – <span class="mark">“nhặt”&nbsp;được&nbsp;vợ</span>.</dd></div>
+                <div><dt>Nhân vật chính</dt><dd><ul class="chips"><li>Tràng</li><li>người vợ nhặt</li><li>bà cụ Tứ</li></ul></dd></div>
+              </dl>
+            </div>
+          </div>
+        </div>
+        <div class="half r">
+          <div class="board leather"></div>
+          <div class="page r">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">I · Khái quát hai tác phẩm</p>
+              <p class="work">Vợ chồng A Phủ <span>cốt truyện</span></p>
+              <div class="swap erode stepper" data-reveal>
+                <div class="panel">
+                  <figure class="erosion-glow eg" data-id="gat-no" data-tint="#c9a862" data-palette="none" data-focal="50% 22%" style="--h: 300">
+                    <img src="img/ap-gat-no.jpg" alt="Minh hoạ: Mị làm dâu gạt nợ trong nhà thống lí Pá Tra, A Phủ chăn bò trừ nợ" />
+                  </figure>
+                  <dl class="defs">
+                    <div><dt>Cốt truyện</dt><dd>Mị bị bắt về làm <span class="mark">con dâu gạt nợ</span> nhà thống lí Pá Tra; A Phủ trở thành <span class="mark">người ở trừ nợ</span>.</dd></div>
+                  </dl>
+                  <p class="cue">còn tiếp…</p>
+                </div>
+                <div class="panel step" data-burn="gat-no" data-focus="gat-no giai-thoat">
+                  <figure class="erosion-glow eg" data-id="giai-thoat" data-tint="#c9a862" data-palette="none" data-focal="50% 60%" style="--h: 300">
+                    <img src="img/ap-giai-thoat.jpg" alt="Minh hoạ: Mị và A Phủ nắm tay chạy khỏi Hồng Ngài lúc bình minh" />
+                  </figure>
+                  <dl class="defs">
+                    <div><dt>Cốt truyện (tiếp)</dt><dd>Sau thời gian sống trong áp bức, Mị và A Phủ <span class="mark">vùng lên tự giải thoát</span>.</dd></div>
+                    <div><dt>Nhân vật chính</dt><dd><ul class="chips"><li>Mị</li><li>A Phủ</li><li>thống lí Pá Tra</li></ul></dd></div>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 · Xác định phương diện so sánh -->
+    <section class="slide spread">
+      <div class="book-open">
+        <div class="half l">
+          <div class="board leather"></div>
+          <div class="page l">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">I · Xác định phương diện so sánh</p>
+              <h2 class="pg-title">Bốn phương diện<br />so sánh</h2>
+              <p class="pg-sub">Những phương diện dùng để đặt<br />hai tác phẩm cạnh nhau</p>
+              <svg class="compass" viewBox="-130 -130 260 260" aria-hidden="true">
+                <g class="ring"><circle r="88" fill="none" stroke="#8f7034" stroke-width="7" stroke-dasharray="1.2 16.08" /></g>
+                <circle class="draw" pathLength="1" r="95" fill="none" stroke="#8f7034" stroke-width="1.5" />
+                <circle class="draw" pathLength="1" r="81" fill="none" stroke="#8f7034" stroke-width="1.5" />
+                <circle class="draw" pathLength="1" r="36" fill="none" stroke="#7a1f2b" stroke-width="1.2" />
+                <g class="fill-in">
+                  <g transform="rotate(45)"><polygon points="0,-56 8,-8 0,0" fill="#c9a862" /><polygon points="0,-56 -8,-8 0,0" fill="#8f7034" /></g>
+                  <g transform="rotate(135)"><polygon points="0,-56 8,-8 0,0" fill="#c9a862" /><polygon points="0,-56 -8,-8 0,0" fill="#8f7034" /></g>
+                  <g transform="rotate(225)"><polygon points="0,-56 8,-8 0,0" fill="#c9a862" /><polygon points="0,-56 -8,-8 0,0" fill="#8f7034" /></g>
+                  <g transform="rotate(315)"><polygon points="0,-56 8,-8 0,0" fill="#c9a862" /><polygon points="0,-56 -8,-8 0,0" fill="#8f7034" /></g>
+                  <g><polygon points="0,-80 13,-13 0,0" fill="#7a1f2b" /><polygon points="0,-80 -13,-13 0,0" fill="#a8434f" /></g>
+                  <g transform="rotate(90)"><polygon points="0,-80 13,-13 0,0" fill="#7a1f2b" /><polygon points="0,-80 -13,-13 0,0" fill="#a8434f" /></g>
+                  <g transform="rotate(180)"><polygon points="0,-80 13,-13 0,0" fill="#7a1f2b" /><polygon points="0,-80 -13,-13 0,0" fill="#a8434f" /></g>
+                  <g transform="rotate(270)"><polygon points="0,-80 13,-13 0,0" fill="#7a1f2b" /><polygon points="0,-80 -13,-13 0,0" fill="#a8434f" /></g>
+                  <circle r="7" fill="#c9a862" stroke="#8f7034" stroke-width="1.5" />
+                  <text x="0" y="-114">I</text>
+                  <text x="116" y="0">II</text>
+                  <text x="0" y="116">III</text>
+                  <text x="-116" y="0">IV</text>
+                </g>
+              </svg>
+              <p class="duo"><span class="v">Vợ nhặt</span><i>✦</i><span class="a">Vợ chồng A Phủ</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="half r">
+          <div class="tabs" aria-hidden="true">
+            <i style="top: calc(229 * var(--px)); background: #7a1f2b"></i>
+            <i style="top: calc(370 * var(--px)); background: #94570f"></i>
+            <i style="top: calc(490 * var(--px)); background: #2b3a7a"></i>
+            <i style="top: calc(610 * var(--px)); background: #8f7034"></i>
+          </div>
+          <div class="board leather"></div>
+          <div class="page r">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">I · Xác định phương diện so sánh</p>
+              <p class="label c" style="--c: var(--oxblood)">Mục lục</p>
+              <ol class="toc">
+                <li><span class="num" style="color: #7a1f2b">I</span><span class="txt">Số phận và hoàn cảnh của người lao động nghèo</span></li>
+                <li><span class="num" style="color: #94570f">II</span><span class="txt">Vẻ đẹp phẩm chất của con&nbsp;người</span></li>
+                <li><span class="num" style="color: #2b3a7a">III</span><span class="txt">Khát vọng sống và tương lai</span></li>
+                <li><span class="num" style="color: #8f7034">IV</span><span class="txt">Nghệ thuật xây dựng nhân vật và cách kể chuyện</span></li>
+              </ol>
+              <p class="route">Tương đồng · Khác biệt · Lý giải · Đánh giá</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7 · II. Điểm tương đồng (mở chương: sợi chỉ vàng nối hai trang) -->
+    <section class="slide spread" data-in-ms="4000">
+      <div class="book-open">
+        <div class="half l">
+          <div class="board leather"></div>
+          <div class="page l">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">II · Điểm tương đồng</p>
+              <p class="part-num">II</p>
+              <h2 class="pg-title">Điểm<br />tương đồng</h2>
+              <p class="pg-sub">về nội dung và nghệ thuật</p>
+            </div>
+          </div>
+        </div>
+        <div class="half r">
+          <div class="board leather"></div>
+          <div class="page r">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">II · Điểm tương đồng</p>
+              <p class="label c" style="--c: var(--oxblood)">Trong chương này</p>
+              <ol class="toc">
+                <li><span class="num">1</span><span class="txt">Đề tài, chủ đề</span></li>
+                <li><span class="num">2</span><span class="txt">Hình tượng, số phận, phẩm chất và vẻ đẹp nhân vật</span></li>
+                <li><span class="num">3</span><span class="txt">Giá trị hiện thực, giá trị nhân&nbsp;đạo</span></li>
+                <li><span class="num">4</span><span class="txt">Nghệ thuật</span></li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <svg class="thread" viewBox="0 0 1392 860" aria-hidden="true">
+          <path class="draw gold" pathLength="1" d="M250 735 C 390 680, 530 790, 696 728 S 1006 680, 1142 735" />
+          <g class="fill-in">
+            <circle cx="250" cy="735" r="9" fill="#c08a2c" />
+            <circle cx="1142" cy="735" r="9" fill="#4a5cab" />
+            <rect x="684" y="716" width="24" height="24" transform="rotate(45 696 728)" fill="#c9a862" stroke="#8f7034" stroke-width="2" />
+            <text x="250" y="792" fill="#94570f">Vợ nhặt</text>
+            <text x="1142" y="792" fill="#2b3a7a">Vợ chồng A Phủ</text>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- 8 · II.1 Đề tài, chủ đề -->
+    <section class="slide spread has-banner c2">
+      <div class="book-open">
+        <div class="half l">
+          <div class="board leather"></div>
+          <div class="page l">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">II · Điểm tương đồng</p>
+              <p class="work">Vợ nhặt <span>đề tài · chủ đề</span></p>
+              <figure class="photo" style="--h: 240; --w: 520">
+                <img src="img/nan-doi-1945.jpg" alt="Đám đông người đói ngồi chờ trên phố Hà Nội năm 1945" style="object-position: 50% 45%" />
+                <figcaption>Nạn đói Ất Dậu, 1945 · ảnh Võ An Ninh</figcaption>
+              </figure>
+              <dl class="defs">
+                <div><dt>Người lao động nghèo</dt><dd>Người dân nghèo trong <span class="mark">nạn đói năm 1945</span>.</dd></div>
+              </dl>
+            </div>
+          </div>
+        </div>
+        <div class="half r">
+          <div class="board leather"></div>
+          <div class="page r">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">II · Điểm tương đồng</p>
+              <p class="work">Vợ chồng A Phủ <span>đề tài · chủ đề</span></p>
+              <figure class="plate" style="--h: 300; --pos: 40% 50%">
+                <img src="img/ap-lao-dong.jpg" alt="Minh hoạ: người H'Mông gùi củi, chăn bò, làm nương dưới nhà thống lí" />
+              </figure>
+              <dl class="defs">
+                <div><dt>Người lao động nghèo</dt><dd>Người dân miền núi Tây Bắc <span class="mark">dưới ách áp bức</span>.</dd></div>
+              </dl>
+            </div>
+          </div>
+        </div>
+        <div class="banner claim" style="--bw: 1180">
+          <div class="banner-body">
+            <small>Điểm chung</small>
+            <p class="gilt">Đề tài: cùng viết về người lao động nghèo trong xã hội cũ</p>
+            <p class="gilt">Chủ đề: số phận đau khổ · sức sống tiềm tàng · khát vọng hạnh phúc, tự do</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9 · II.2 Hình tượng nhân vật, số phận -->
+    <section class="slide spread has-banner c2">
+      <div class="book-open">
+        <div class="half l">
+          <div class="board leather"></div>
+          <div class="page l">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">II · Điểm tương đồng</p>
+              <p class="work">Vợ nhặt <span>số phận</span></p>
+              <figure class="plate" style="--h: 215; --pos: 45% 55%">
+                <img src="img/vn-bong-ma.jpg" alt="Minh hoạ: dòng người đói xanh xám lê bước trên đường làng" />
+              </figure>
+              <ul class="chips"><li>Tràng</li><li>người vợ nhặt</li><li>bà cụ Tứ</li></ul>
+              <p class="ctx">Cảnh nạn đói…</p>
+              <p class="quote">Người đói xanh xám như những bóng ma.”</p>
+            </div>
+          </div>
+        </div>
+        <div class="half r">
+          <div class="board leather"></div>
+          <div class="page r">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">II · Điểm tương đồng</p>
+              <p class="work">Vợ chồng A Phủ <span>số phận</span></p>
+              <figure class="plate" style="--h: 215; --pos: 60% 55%">
+                <img src="img/ap-rua.jpg" alt="Minh hoạ: Mị ngồi lặng lẽ trong góc tối nhà thống lí" />
+              </figure>
+              <ul class="chips"><li>Mị</li><li>A Phủ</li></ul>
+              <p class="ctx">Mị sống…</p>
+              <p class="quote">lùi lũi như con rùa nuôi trong xó cửa.”</p>
+            </div>
+          </div>
+        </div>
+        <div class="banner claim" style="--bw: 1180">
+          <div class="banner-body">
+            <small>Điểm chung · Hình tượng nhân vật</small>
+            <p class="gilt">Người lao động nghèo: số phận bất hạnh nhưng giàu sức sống, phẩm chất tốt đẹp</p>
+            <p class="gilt">Số phận: chịu nhiều đau khổ, bị đẩy vào hoàn cảnh khốn cùng</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 · II.2 Phẩm chất -->
+    <section class="slide spread has-banner c1">
+      <div class="book-open">
+        <div class="half l">
+          <div class="board leather"></div>
+          <div class="page l">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">II · Điểm tương đồng</p>
+              <p class="work">Vợ nhặt <span>phẩm chất</span></p>
+              <figure class="plate" style="--h: 290; --pos: 45% 40%">
+                <img src="img/vn-me-don-dau.jpg" alt="Minh hoạ: bà cụ Tứ đón nàng dâu mới trong căn nhà tranh" />
+              </figure>
+              <p class="ctx">Bà cụ Tứ đón nhận <span class="mark">nàng dâu</span> giữa ngày đói:</p>
+              <p class="quote">U cũng mừng lòng.”</p>
+            </div>
+          </div>
+        </div>
+        <div class="half r">
+          <div class="board leather"></div>
+          <div class="page r">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">II · Điểm tương đồng</p>
+              <p class="work">Vợ chồng A Phủ <span>phẩm chất</span></p>
+              <figure class="plate" style="--h: 290; --pos: 50% 32%">
+                <img src="img/ap-cat-day.jpg" alt="Minh hoạ: Mị cắt dây trói cứu A Phủ" />
+              </figure>
+              <p class="ctx">Mị nhìn thấy nước mắt A Phủ và quyết định <span class="mark">cắt dây trói</span> cứu anh:</p>
+              <p class="quote">Mị cũng không sợ nữa.”</p>
+            </div>
+          </div>
+        </div>
+        <div class="banner claim" style="--bw: 900">
+          <div class="banner-body">
+            <small>Điểm chung · Phẩm chất</small>
+            <p class="gilt">Giàu tình yêu thương, sức sống, khát vọng hạnh phúc</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11 · II.2 Vẻ đẹp nhân vật -->
+    <section class="slide spread has-banner c1">
+      <div class="book-open">
+        <div class="half l">
+          <div class="board leather"></div>
+          <div class="page l">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">II · Điểm tương đồng</p>
+              <p class="work">Vợ nhặt <span>vẻ đẹp nhân vật</span></p>
+              <figure class="plate" style="--h: 300; --pos: 40% 60%">
+                <img src="img/vn-chao-cam.jpg" alt="Minh hoạ: bữa cơm ngày đói với nồi cháo cám, cả nhà vẫn nói chuyện tương lai" />
+              </figure>
+              <p class="ctx">Bữa cơm ngày đói chỉ có nồi cháo cám…</p>
+              <p class="lede">…nhưng mọi người vẫn <span class="mark">nói chuyện tương lai</span>.</p>
+            </div>
+          </div>
+        </div>
+        <div class="half r">
+          <div class="board leather"></div>
+          <div class="page r">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">II · Điểm tương đồng</p>
+              <p class="work">Vợ chồng A Phủ <span>vẻ đẹp nhân vật</span></p>
+              <figure class="plate" style="--h: 290; --pos: 50% 30%">
+                <img src="img/ap-dem-xuan.jpg" alt="Minh hoạ: Mị nghe tiếng sáo trong đêm mùa xuân" />
+              </figure>
+              <ol class="path">
+                <li>Trạng thái tê liệt</li>
+                <li>Hồi sinh trong đêm mùa xuân</li>
+                <li>Cứu A Phủ</li>
+                <li>Tự giải thoát</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <div class="banner claim" style="--bw: 1180">
+          <div class="banner-body">
+            <small>Điểm chung · Vẻ đẹp nhân vật</small>
+            <p class="gilt">Vẻ đẹp tâm hồn, tình người và khát vọng vươn lên tới cuộc sống tốt đẹp hơn</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12 · II.3 Giá trị hiện thực, giá trị nhân đạo -->
+    <section class="slide spread has-banner c2">
+      <div class="book-open">
+        <div class="half l">
+          <div class="board leather"></div>
+          <div class="page l">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">II · Điểm tương đồng</p>
+              <p class="work">Vợ nhặt <span>giá trị</span></p>
+              <figure class="plate" style="--h: 175; --pos: 50% 60%">
+                <img src="img/vn-nga-ra.jpg" alt="Minh hoạ: con đường làng xơ xác, rơm rạ ngổn ngang, quạ bay" />
+              </figure>
+              <dl class="defs">
+                <div><dt>Hiện thực</dt><dd><b>“Người chết như ngả rạ.”</b></dd></div>
+                <div><dt>Nhân đạo</dt><dd>Tràng <span class="mark">cưu mang</span> vợ; bà cụ Tứ đón nhận nàng dâu; kết thúc hướng tới hy vọng.</dd></div>
+              </dl>
+            </div>
+          </div>
+        </div>
+        <div class="half r">
+          <div class="board leather"></div>
+          <div class="page r">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">II · Điểm tương đồng</p>
+              <p class="work">Vợ chồng A Phủ <span>giá trị</span></p>
+              <figure class="plate" style="--h: 175; --pos: 45% 45%">
+                <img src="img/ap-troi-dung.jpg" alt="Minh hoạ: A Phủ bị trói đứng vào cột giữa đêm đông" />
+              </figure>
+              <dl class="defs">
+                <div><dt>Hiện thực</dt><dd>A Phủ bị <b>trói đứng nhiều ngày</b>.</dd></div>
+                <div><dt>Nhân đạo</dt><dd>Mị <span class="mark">cắt dây trói</span> cứu A Phủ và cùng anh chạy trốn.</dd></div>
+              </dl>
+            </div>
+          </div>
+        </div>
+        <div class="banner claim" style="--bw: 1180">
+          <div class="banner-body">
+            <small>Điểm chung</small>
+            <p class="gilt">Giá trị hiện thực: tố cáo xã hội bất công, tàn bạo</p>
+            <p class="gilt">Giá trị nhân đạo: cảm thương số phận con người, trân trọng phẩm chất tốt đẹp</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13 · II.4 Nghệ thuật: người kể, ngôi kể, điểm nhìn, giọng điệu (giống nhau ở cả hai) -->
+    <section class="slide spread">
+      <div class="book-open">
+        <div class="half l">
+          <div class="board leather"></div>
+          <div class="page l shared">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">II · Điểm tương đồng · Nghệ thuật</p>
+              <p class="work">Cả hai tác phẩm <span>cách kể</span></p>
+              <dl class="cards">
+                <div class="card"><dt>Người kể chuyện</dt><dd>Người kể chuyện giấu mình</dd></div>
+                <div class="card"><dt>Ngôi kể</dt><dd>Ngôi kể thứ ba</dd></div>
+                <div class="card"><dt>Điểm nhìn</dt><dd>Kết hợp điểm nhìn bên ngoài và bên trong</dd></div>
+              </dl>
+              <p class="duo"><span class="v">Vợ nhặt</span><i>✦</i><span class="a">Vợ chồng A Phủ</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="half r">
+          <div class="board leather"></div>
+          <div class="page r shared">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">II · Điểm tương đồng · Nghệ thuật</p>
+              <p class="work">Cả hai tác phẩm <span>giọng điệu</span></p>
+              <p class="lede" style="text-align: center">Kết hợp giọng điệu</p>
+              <div class="pair">
+                <figure>
+                  <div class="medal"><img src="img/vn-bong-ma.jpg" alt="" style="--pos: 28% 45%" /></div>
+                  <figcaption>xót thương,<br />cảm thông</figcaption>
+                </figure>
+                <i>+</i>
+                <figure>
+                  <div class="medal"><img src="img/ap-giai-thoat.jpg" alt="" style="--pos: 52% 55%" /></div>
+                  <figcaption>trân trọng,<br />ngợi ca</figcaption>
+                </figure>
+              </div>
+              <p class="lede" style="text-align: center">…những <span class="mark">phẩm chất tốt đẹp</span>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 14 · II.4 Kết cấu truyện -->
+    <section class="slide spread has-banner c1">
+      <div class="book-open">
+        <div class="half l">
+          <div class="board leather"></div>
+          <div class="page l">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">II · Điểm tương đồng · Nghệ thuật</p>
+              <p class="work">Vợ nhặt <span>kết cấu</span></p>
+              <figure class="photo" style="--h: 200; --w: 470; --tilt: -1deg">
+                <img src="img/pha-kho-thoc-1945.jpg" alt="Người dân phá kho thóc Nhật năm 1945" style="object-position: 50% 40%" />
+                <figcaption>Phá kho thóc Nhật, 1945 · ảnh Võ An Ninh</figcaption>
+              </figure>
+              <ol class="path">
+                <li>Bóng tối của nạn đói</li>
+                <li>Tình người, mái ấm</li>
+                <li>Hướng tới ánh sáng và tương lai</li>
+              </ol>
+              <p class="ctx">Dẫn chứng: hình ảnh <span class="mark">lá cờ đỏ</span> ở cuối truyện.</p>
+            </div>
+          </div>
+        </div>
+        <div class="half r">
+          <div class="board leather"></div>
+          <div class="page r">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">II · Điểm tương đồng · Nghệ thuật</p>
+              <p class="work">Vợ chồng A Phủ <span>kết cấu</span></p>
+              <figure class="plate" style="--h: 220; --pos: 55% 55%">
+                <img src="img/ap-roi-hong-ngai.jpg" alt="Minh hoạ: Mị và A Phủ đi trên đường núi rời Hồng Ngài lúc bình minh" />
+              </figure>
+              <ol class="path">
+                <li>Kiếp sống nô lệ</li>
+                <li>Thức tỉnh</li>
+                <li>Phản kháng</li>
+                <li>Tự giải phóng</li>
+              </ol>
+              <p class="ctx">Dẫn chứng: Mị và A Phủ <span class="mark">rời khỏi Hồng Ngài</span>.</p>
+            </div>
+          </div>
+        </div>
+        <div class="banner claim" style="--bw: 1270">
+          <div class="banner-body">
+            <small>Điểm chung · Kết cấu truyện</small>
+            <p class="gilt">Từ hoàn cảnh đau khổ, éo le đến chuyển biến trong nhận thức, tâm trạng, số phận</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 15 · II.4 Nghệ thuật xây dựng nhân vật -->
+    <section class="slide spread has-banner c1">
+      <div class="book-open">
+        <div class="half l">
+          <div class="board leather"></div>
+          <div class="page l">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">II · Điểm tương đồng · Nghệ thuật</p>
+              <p class="work">Vợ nhặt <span>nhân vật</span></p>
+              <figure class="plate" style="--h: 290; --pos: 50% 62%">
+                <img src="img/vn-ve-nha.jpg" alt="Minh hoạ: Tràng dẫn người vợ nhặt về xóm ngụ cư lúc chiều tà" />
+              </figure>
+              <p class="lede">Khắc họa qua ngoại hình, hành động, lời nói và đặc biệt là <span class="mark">diễn biến tâm lí</span>:</p>
+              <ul class="chips"><li>Tràng</li><li>bà cụ Tứ</li></ul>
+            </div>
+          </div>
+        </div>
+        <div class="half r">
+          <div class="board leather"></div>
+          <div class="page r">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">II · Điểm tương đồng · Nghệ thuật</p>
+              <p class="work">Vợ chồng A Phủ <span>nhân vật</span></p>
+              <figure class="plate" style="--h: 290; --pos: 40% 45%">
+                <img src="img/ap-mi-tinh-day.jpg" alt="Minh hoạ: Mị bên bếp lửa đêm khuya, bừng tỉnh khi nhìn ra A Phủ bị trói" />
+              </figure>
+              <p class="lede">Đặc biệt thành công trong miêu tả <span class="mark">tâm lí Mị</span> qua những biến chuyển:</p>
+              <ol class="arc"><li>cam chịu</li><li>hồi sinh</li><li>phản kháng</li><li>tự giải phóng</li></ol>
+            </div>
+          </div>
+        </div>
+        <div class="banner claim" style="--bw: 1180">
+          <div class="banner-body">
+            <small>Điểm chung · Xây dựng nhân vật</small>
+            <p class="gilt">Khắc họa qua ngoại hình, hành động, lời nói, tâm lí và diễn biến nội tâm</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 16 · II.4 Ngôn ngữ -->
+    <section class="slide spread has-banner c1">
+      <div class="book-open">
+        <div class="half l">
+          <div class="board leather"></div>
+          <div class="page l">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">II · Điểm tương đồng · Nghệ thuật</p>
+              <p class="work">Vợ nhặt <span>ngôn ngữ</span></p>
+              <figure class="plate" style="--h: 260; --pos: 40% 55%">
+                <img src="img/vn-u-con.jpg" alt="Minh hoạ: bà cụ Tứ và Tràng trò chuyện trong căn nhà tranh" />
+              </figure>
+              <p class="lede">Đậm chất <span class="mark">khẩu ngữ</span> của người nông dân Bắc Bộ.</p>
+              <ul class="stamps"><li>“u – con”</li><li>lời nói ngắn</li><li>dân dã</li></ul>
+            </div>
+          </div>
+        </div>
+        <div class="half r">
+          <div class="board leather"></div>
+          <div class="page r">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">II · Điểm tương đồng · Nghệ thuật</p>
+              <p class="work">Vợ chồng A Phủ <span>ngôn ngữ</span></p>
+              <figure class="plate" style="--h: 190; --pos: 50% 50%">
+                <img src="img/ap-phien-cho.jpg" alt="Minh hoạ: phiên chợ mùa xuân của người H'Mông, trai thổi sáo, hoa ban nở" />
+              </figure>
+              <p class="lede">Giàu màu sắc <span class="mark">dân tộc và miền núi</span> Tây Bắc.</p>
+              <ul class="stamps"><li>“con dâu gạt nợ”</li><li>“thống lí”</li><li>“A Phủ”</li><li>“Hồng Ngài”</li></ul>
+              <ul class="stamps soft"><li>đêm tình mùa xuân</li><li>tiếng sáo</li><li>phiên chợ</li></ul>
+            </div>
+          </div>
+        </div>
+        <div class="banner claim" style="--bw: 1100">
+          <div class="banner-body">
+            <small>Điểm chung · Ngôn ngữ</small>
+            <p class="gilt">Giản dị, gần gũi với đời sống, đậm màu sắc của từng vùng miền</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 17 · III. Điểm khác biệt (mở chương: sợi chỉ tách làm hai) -->
+    <section class="slide spread" data-in-ms="4000">
+      <div class="book-open">
+        <div class="half l">
+          <div class="board leather"></div>
+          <div class="page l">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">III · Điểm khác biệt</p>
+              <p class="part-num">III</p>
+              <h2 class="pg-title">Điểm<br />khác biệt</h2>
+              <p class="pg-sub">mỗi tác phẩm một con đường</p>
+            </div>
+          </div>
+        </div>
+        <div class="half r">
+          <div class="board leather"></div>
+          <div class="page r">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">III · Điểm khác biệt</p>
+              <p class="label c" style="--c: var(--oxblood)">Trong chương này</p>
+              <ol class="toc">
+                <li><span class="num">1</span><span class="txt">Tư tưởng, chủ đề và cách nhìn con người</span></li>
+                <li><span class="num">2</span><span class="txt">Số phận và diễn biến tâm lí nhân vật</span></li>
+                <li><span class="num">3</span><span class="txt">Giá trị hiện thực và nhân đạo</span></li>
+                <li><span class="num">4</span><span class="txt">Đặc sắc nghệ thuật</span></li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <svg class="thread" viewBox="0 0 1392 860" aria-hidden="true">
+          <path class="draw gold" pathLength="1" d="M696 650 L696 705" />
+          <path class="draw vn" pathLength="1" d="M696 705 C 560 705, 420 790, 250 740" />
+          <path class="draw ap" pathLength="1" d="M696 705 C 832 705, 972 790, 1142 740" />
+          <g class="fill-in">
+            <circle cx="250" cy="740" r="9" fill="#c08a2c" />
+            <circle cx="1142" cy="740" r="9" fill="#4a5cab" />
+            <rect x="684" y="693" width="24" height="24" transform="rotate(45 696 705)" fill="#c9a862" stroke="#8f7034" stroke-width="2" />
+            <text x="250" y="796" fill="#94570f">Vợ nhặt</text>
+            <text x="1142" y="796" fill="#2b3a7a">Vợ chồng A Phủ</text>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- 18 · III.1 Tư tưởng, chủ đề · số phận -->
+    <section class="slide spread">
+      <div class="book-open">
+        <div class="half l">
+          <div class="board leather"></div>
+          <div class="page l">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">III · Điểm khác biệt</p>
+              <p class="work">Vợ nhặt <span>chủ đề · số phận</span></p>
+              <figure class="plate" style="--h: 255; --pos: 50% 55%">
+                <img src="img/vn-xom-ngu-cu.jpg" alt="Minh hoạ: xóm ngụ cư chật chội, khói đốt rơm, quạ bay trong nạn đói" />
+              </figure>
+              <dl class="defs">
+                <div><dt>Tập trung vào</dt><dd><span class="kw">Nạn đói 1945</span></dd></div>
+                <div><dt>Số phận nhân vật</dt><dd>Nạn nhân của <span class="kw">cái đói</span></dd></div>
+              </dl>
+            </div>
+          </div>
+        </div>
+        <div class="half r">
+          <div class="board leather"></div>
+          <div class="page r">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">III · Điểm khác biệt</p>
+              <p class="work">Vợ chồng A Phủ <span>chủ đề · số phận</span></p>
+              <figure class="plate" style="--h: 240; --pos: 40% 50%">
+                <img src="img/ap-than-quyen.jpg" alt="Minh hoạ: Mị quỳ trước bàn thờ ma nhà thống lí, thầy cúng và Pá Tra ngồi bên" />
+              </figure>
+              <dl class="defs">
+                <div><dt>Tập trung vào</dt><dd><span class="kw">Xã hội phong kiến Tây Bắc</span></dd></div>
+                <div><dt>Số phận nhân vật</dt><dd>Nạn nhân của <span class="kw">cường quyền, thần quyền</span></dd></div>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 19 · III.2 Diễn biến tâm lí -->
+    <section class="slide spread">
+      <div class="book-open">
+        <div class="half l">
+          <div class="board leather"></div>
+          <div class="page l">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">III · Điểm khác biệt</p>
+              <p class="work">Vợ nhặt <span>diễn biến tâm lí</span></p>
+              <figure class="plate" style="--h: 270; --pos: 45% 50%">
+                <img src="img/vn-sang-hom-sau.jpg" alt="Minh hoạ: buổi sáng hôm sau, sân nhà Tràng quét sạch, người vợ quét sân, bà cụ Tứ nhặt cỏ" />
+              </figure>
+              <p class="lede">Hướng tới <span class="mark">tương lai, mái ấm gia đình</span>.</p>
+              <div class="shift">
+                <b>Tràng</b><span>ngờ nghệch</span><i>→</i><span class="to">có ý thức trụ cột</span>
+                <b>Người vợ</b><span>chao chát, liều lĩnh</span><i>→</i><span class="to">hiền thục</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="half r">
+          <div class="board leather"></div>
+          <div class="page r">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">III · Điểm khác biệt</p>
+              <p class="work">Vợ chồng A Phủ <span>diễn biến tâm lí</span></p>
+              <figure class="plate" style="--h: 270; --pos: 62% 55%">
+                <img src="img/ap-rua.jpg" alt="Minh hoạ: Mị ngồi lặng lẽ trong góc tối nhà thống lí" />
+              </figure>
+              <ol class="arc"><li>cam chịu</li><li>thức tỉnh</li><li>phản kháng</li></ol>
+              <div class="shift stack">
+                <b>Mị</b><span>“như con rùa nuôi trong xó cửa”</span><i>↓</i><span class="to">bừng tỉnh trong đêm lạnh, cắt dây cởi trói A Phủ</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 20 · III.3 Giá trị hiện thực và nhân đạo -->
+    <section class="slide spread">
+      <div class="book-open">
+        <div class="half l">
+          <div class="board leather"></div>
+          <div class="page l">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">III · Điểm khác biệt</p>
+              <p class="work">Vợ nhặt <span>giá trị</span></p>
+              <figure class="plate" style="--h: 195; --pos: 50% 55%">
+                <img src="img/vn-nga-ra.jpg" alt="Minh hoạ: con đường làng xơ xác, rơm rạ ngổn ngang, quạ bay" />
+              </figure>
+              <dl class="defs">
+                <div><dt>Hiện thực</dt><dd>Bức tranh xóm ngụ cư <span class="mark">ngột ngạt mùi tử khí</span>, ranh giới sống chết mỏng manh.</dd></div>
+                <div><dt>Nhân đạo</dt><dd>Nâng niu <span class="mark">hạnh phúc gia đình</span>, ca ngợi sự cưu mang nhau lúc hoạn nạn.</dd></div>
+              </dl>
+            </div>
+          </div>
+        </div>
+        <div class="half r">
+          <div class="board leather"></div>
+          <div class="page r">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">III · Điểm khác biệt</p>
+              <p class="work">Vợ chồng A Phủ <span>giá trị</span></p>
+              <figure class="plate" style="--h: 195; --pos: 45% 50%">
+                <img src="img/ap-phat-va.jpg" alt="Minh hoạ: A Phủ quỳ giữa nhà thống lí trong cuộc xử kiện, phạt vạ" />
+              </figure>
+              <dl class="defs">
+                <div><dt>Hiện thực</dt><dd>Luật lệ bóc lột, <span class="mark">phạt vạ tàn bạo</span> của chúa đất.</dd></div>
+                <div><dt>Nhân đạo</dt><dd>Sự đồng cảm giai cấp và <span class="mark">con đường tìm kiếm tự do</span>.</dd></div>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 21 · III.4 Nghệ thuật: tình huống, điểm nhìn & tâm lí -->
+    <section class="slide spread">
+      <div class="book-open">
+        <div class="half l">
+          <div class="board leather"></div>
+          <div class="page l">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">III · Điểm khác biệt · Nghệ thuật</p>
+              <p class="work">Vợ nhặt <span>nghệ thuật</span></p>
+              <figure class="plate" style="--h: 250; --pos: 50% 40%">
+                <img src="img/vn-nhat-vo.jpg" alt="Minh hoạ: Tràng đãi người đàn bà ăn bánh đúc ở chợ" />
+              </figure>
+              <dl class="defs">
+                <div><dt>Tình huống</dt><dd><span class="mark">Bất ngờ, éo le, vừa bi vừa hài</span>: Tràng nhặt vợ giữa nạn đói.</dd></div>
+                <div><dt>Điểm nhìn &amp; tâm lí</dt><dd>Góc nhìn thứ ba, luân chuyển linh hoạt nội tâm cả ba nhân vật:<ul class="chips"><li>Tràng</li><li>vợ nhặt</li><li>bà cụ Tứ</li></ul></dd></div>
+              </dl>
+            </div>
+          </div>
+        </div>
+        <div class="half r">
+          <div class="board leather"></div>
+          <div class="page r">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">III · Điểm khác biệt · Nghệ thuật</p>
+              <p class="work">Vợ chồng A Phủ <span>nghệ thuật</span></p>
+              <ol class="stairs">
+                <li style="--n: 1">bị bắt làm dâu gạt nợ</li>
+                <li style="--n: 2">đêm tình mùa xuân</li>
+                <li style="--n: 3">A Phủ bị trói</li>
+                <li style="--n: 4">cắt dây, cùng chạy trốn</li>
+              </ol>
+              <dl class="defs">
+                <div><dt>Tình huống</dt><dd>Chuỗi biến cố <span class="mark">tích tụ dần thành cao trào</span>.</dd></div>
+                <div><dt>Điểm nhìn &amp; tâm lí</dt><dd>Góc nhìn thứ ba, đi sâu vào điểm nhìn, <span class="mark">dòng ý thức</span> của Mị.<ul class="chips"><li>Mị</li></ul></dd></div>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 22 · III.4 Nghệ thuật: ngôn ngữ, kết cấu & không gian (ảnh nhỏ / ảnh rộng) -->
+    <section class="slide spread">
+      <div class="book-open">
+        <div class="half l">
+          <div class="board leather"></div>
+          <div class="page l">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">III · Điểm khác biệt · Nghệ thuật</p>
+              <p class="work">Vợ nhặt <span>nghệ thuật</span></p>
+              <div class="scale">
+                <figure class="photo" style="--h: 190; --w: 300; --tilt: -1.5deg">
+                  <img src="img/vn-xom-ngu-cu.jpg" alt="Minh hoạ: xóm ngụ cư chật hẹp" style="object-position: 50% 70%" />
+                </figure>
+                <p class="ctx">thời gian ngắn · xóm ngụ cư chật hẹp</p>
+              </div>
+              <dl class="defs">
+                <div><dt>Kết cấu &amp; không gian</dt><dd>Kết cấu <span class="mark">dồn nén</span>, thời gian ngắn trong xóm ngụ cư chật hẹp.</dd></div>
+                <div><dt>Ngôn ngữ</dt><dd>Đậm chất khẩu ngữ, <span class="mark">mộc mạc</span> của nông thôn đồng bằng Bắc Bộ.</dd></div>
+              </dl>
+            </div>
+          </div>
+        </div>
+        <div class="half r">
+          <div class="board leather"></div>
+          <div class="page r">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">III · Điểm khác biệt · Nghệ thuật</p>
+              <p class="work">Vợ chồng A Phủ <span>nghệ thuật</span></p>
+              <div class="scale">
+                <figure class="photo" style="--h: 205; --w: 560; --tilt: 0.8deg">
+                  <img src="img/tay-bac-suong.jpg" alt="Núi rừng Tây Bắc trong sương" />
+                  <figcaption>Núi rừng Tây Bắc trong sương</figcaption>
+                </figure>
+                <p class="ctx">thời gian dài · núi rừng rộng lớn</p>
+              </div>
+              <dl class="defs">
+                <div><dt>Kết cấu &amp; không gian</dt><dd>Kết cấu thời gian dài giữa <span class="mark">núi rừng rộng lớn</span>.</dd></div>
+                <div><dt>Ngôn ngữ</dt><dd>Giàu <span class="mark">chất thơ</span>, nhịp điệu miên man phong vị Tây Bắc.</dd></div>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 23 · IV. Lý giải (mở chương: hai sợi chỉ lần ngược về một gốc) -->
+    <section class="slide spread" data-in-ms="4000">
+      <div class="book-open">
+        <div class="half l">
+          <div class="board leather"></div>
+          <div class="page l">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">IV · Lý giải</p>
+              <p class="part-num">IV</p>
+              <h2 class="pg-title">Lý giải</h2>
+              <p class="pg-sub">sự tương đồng và khác biệt</p>
+            </div>
+          </div>
+        </div>
+        <div class="half r">
+          <div class="board leather"></div>
+          <div class="page r">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">IV · Lý giải</p>
+              <p class="label c" style="--c: var(--oxblood)">Trong chương này</p>
+              <ol class="toc">
+                <li><span class="num">1</span><span class="txt">Vì sao hai tác phẩm tương đồng<small>người lao động nghèo · hiện thực khắc nghiệt · cảm hứng nhân đạo</small></span></li>
+                <li><span class="num">2</span><span class="txt">Vì sao mỗi tác phẩm một vẻ riêng<small>Kim Lân am hiểu nông thôn · Tô Hoài am hiểu miền núi</small></span></li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <svg class="thread" viewBox="0 0 1392 860" aria-hidden="true">
+          <path class="draw vn" pathLength="1" d="M250 740 C 420 790, 560 705, 696 705" />
+          <path class="draw ap" pathLength="1" d="M1142 740 C 972 790, 832 705, 696 705" />
+          <path class="draw gold" pathLength="1" d="M696 705 L696 640" />
+          <g class="fill-in">
+            <circle cx="250" cy="740" r="9" fill="#c08a2c" />
+            <circle cx="1142" cy="740" r="9" fill="#4a5cab" />
+            <rect x="684" y="693" width="24" height="24" transform="rotate(45 696 705)" fill="#c9a862" stroke="#8f7034" stroke-width="2" />
+            <circle cx="696" cy="640" r="7" fill="#7a1f2b" />
+            <text x="250" y="796" fill="#94570f">Kim Lân</text>
+            <text x="1142" y="796" fill="#2b3a7a">Tô Hoài</text>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- 24 · IV.1 Vì sao tương đồng -->
+    <section class="slide spread has-banner c3">
+      <div class="book-open">
+        <div class="half l">
+          <div class="board leather"></div>
+          <div class="page l">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">IV · Lý giải · Tương đồng</p>
+              <p class="work">Vợ nhặt <span>Kim Lân</span></p>
+              <div class="author sm">
+                <div class="medal"><img src="img/kim-lan.jpg" alt="Chân dung nhà văn Kim Lân" style="--pos: 50% 60%" /></div>
+                <div>
+                  <h3>Kim Lân</h3>
+                  <p>nhà văn của nông thôn</p>
+                </div>
+              </div>
+              <ol class="why">
+                <li><small>Ngòi bút hướng về</small><b>người nông dân nghèo</b></li>
+                <li><small>Hiện thực khắc nghiệt</small><b>nạn đói năm 1945</b></li>
+                <li><small>Cảm hứng nhân đạo</small><b>trân trọng tình người</b></li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <div class="half r">
+          <div class="board leather"></div>
+          <div class="page r">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">IV · Lý giải · Tương đồng</p>
+              <p class="work">Vợ chồng A Phủ <span>Tô Hoài</span></p>
+              <div class="author sm">
+                <div class="medal"><img src="img/to-hoai.jpg" alt="Chân dung nhà văn Tô Hoài" style="--pos: 50% 40%" /></div>
+                <div>
+                  <h3>Tô Hoài</h3>
+                  <p>người đưa miền núi vào trang văn</p>
+                </div>
+              </div>
+              <ol class="why">
+                <li><small>Ngòi bút hướng về</small><b>người dân miền núi Tây Bắc</b></li>
+                <li><small>Hiện thực khắc nghiệt</small><b>cường quyền, thần quyền</b></li>
+                <li><small>Cảm hứng nhân đạo</small><b>trân trọng sức sống,<br />khát vọng tự do</b></li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <div class="banner claim" style="--bw: 1000">
+          <div class="banner-body">
+            <small>Vì sao tương đồng</small>
+            <p class="gilt">1 · Cùng hướng ngòi bút vào người lao động nghèo</p>
+            <p class="gilt">2 · Cùng chịu ảnh hưởng từ hiện thực xã hội khắc nghiệt</p>
+            <p class="gilt">3 · Cùng đề cao giá trị con người và cảm hứng nhân đạo</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 25 · IV.2 Vì sao khác biệt: vốn sống của mỗi nhà văn -->
+    <section class="slide spread">
+      <div class="book-open">
+        <div class="half l">
+          <div class="board leather"></div>
+          <div class="page l">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">IV · Lý giải · Khác biệt</p>
+              <p class="work">Kim Lân <span>vốn sống</span></p>
+              <figure class="plate" style="--h: 300; --pos: 40% 55%">
+                <img src="img/vn-lang-que.jpg" alt="Minh hoạ: làng quê Bắc Bộ với lũy tre, mái rạ, ao làng, người dắt trâu trên bờ đê" />
+              </figure>
+              <dl class="defs">
+                <div><dt>Am hiểu</dt><dd><span class="kw">Nông thôn</span></dd></div>
+                <div><dt>Chú trọng</dt><dd><span class="mark">Tình người</span> và mái ấm gia đình.</dd></div>
+              </dl>
+            </div>
+          </div>
+        </div>
+        <div class="half r">
+          <div class="board leather"></div>
+          <div class="page r">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">IV · Lý giải · Khác biệt</p>
+              <p class="work">Tô Hoài <span>vốn sống</span></p>
+              <figure class="plate" style="--h: 300; --pos: 55% 50%">
+                <img src="img/ap-phong-tuc.jpg" alt="Minh hoạ: hội xuân của người H'Mông, trai thổi khèn, gái ném pao, hoa ban nở trên núi" />
+              </figure>
+              <dl class="defs">
+                <div><dt>Am hiểu</dt><dd><span class="kw">Miền núi</span></dd></div>
+                <div><dt>Nổi bật</dt><dd><span class="mark">Phong tục</span> và quá trình con người tự giải phóng.</dd></div>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 26 · V. Đánh giá (mở chương: hai sợi chỉ đan vào nhau) -->
+    <section class="slide spread" data-in-ms="4000">
+      <div class="book-open">
+        <div class="half l">
+          <div class="board leather"></div>
+          <div class="page l">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">V · Đánh giá</p>
+              <p class="part-num">V</p>
+              <h2 class="pg-title">Đánh giá</h2>
+              <p class="pg-sub">giá trị và đóng góp</p>
+            </div>
+          </div>
+        </div>
+        <div class="half r">
+          <div class="board leather"></div>
+          <div class="page r">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">V · Đánh giá</p>
+              <p class="label c" style="--c: var(--oxblood)">Trong chương này</p>
+              <ol class="toc">
+                <li><span class="num">1</span><span class="txt">Điểm gặp gỡ trong tư tưởng và cảm hứng sáng tác</span></li>
+                <li><span class="num">2</span><span class="txt">Nét độc đáo riêng của mỗi tác phẩm</span></li>
+                <li><span class="num">3</span><span class="txt">Giá trị và sức sống của hai tác phẩm</span></li>
+                <li><span class="num">4</span><span class="txt">Đóng góp của hai tác giả</span></li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <svg class="thread" viewBox="0 0 1392 860" aria-hidden="true">
+          <path class="draw vn" pathLength="1" d="M250 735 C 400 670, 540 800, 696 735 S 990 670, 1142 735" />
+          <path class="draw ap" pathLength="1" d="M250 735 C 400 800, 540 670, 696 735 S 990 800, 1142 735" />
+          <g class="fill-in">
+            <circle cx="250" cy="735" r="9" fill="#c08a2c" />
+            <circle cx="1142" cy="735" r="9" fill="#4a5cab" />
+            <path d="M696 707 L703 728 L724 735 L703 742 L696 763 L689 742 L668 735 L689 728 Z" fill="#c9a862" stroke="#8f7034" stroke-width="2" />
+            <text x="250" y="792" fill="#94570f">Vợ nhặt</text>
+            <text x="1142" y="792" fill="#2b3a7a">Vợ chồng A Phủ</text>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- 27 · V.1 Điểm gặp gỡ trong tư tưởng, cảm hứng: từ đau khổ đến khát vọng -->
+    <section class="slide spread has-banner c2">
+      <div class="book-open">
+        <div class="half l">
+          <div class="board leather"></div>
+          <div class="page l">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">V · Đánh giá · Điểm gặp gỡ</p>
+              <p class="work">Vợ nhặt <span>tư tưởng</span></p>
+              <div class="dip">
+                <figure>
+                  <img src="img/vn-bong-ma.jpg" alt="Minh hoạ: dòng người đói xanh xám trên đường làng" style="--pos: 45% 55%" />
+                  <figcaption>hiện thực<br />đau khổ</figcaption>
+                </figure>
+                <i>→</i>
+                <figure>
+                  <img src="img/vn-sang-hom-sau.jpg" alt="Minh hoạ: buổi sáng hôm sau, sân nhà Tràng quét sạch" style="--pos: 45% 50%" />
+                  <figcaption>khát vọng<br />hạnh phúc</figcaption>
+                </figure>
+              </div>
+              <p class="lede">Giữa nạn đói, con người vẫn khao khát <span class="mark">hạnh phúc, mái ấm</span>.</p>
+            </div>
+          </div>
+        </div>
+        <div class="half r">
+          <div class="board leather"></div>
+          <div class="page r">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">V · Đánh giá · Điểm gặp gỡ</p>
+              <p class="work">Vợ chồng A Phủ <span>tư tưởng</span></p>
+              <div class="dip">
+                <figure>
+                  <img src="img/ap-troi-dung.jpg" alt="Minh hoạ: A Phủ bị trói đứng vào cột giữa đêm đông" style="--pos: 45% 45%" />
+                  <figcaption>hiện thực<br />đau khổ</figcaption>
+                </figure>
+                <i>→</i>
+                <figure>
+                  <img src="img/ap-giai-thoat.jpg" alt="Minh hoạ: Mị và A Phủ nắm tay chạy khỏi Hồng Ngài lúc bình minh" style="--pos: 52% 55%" />
+                  <figcaption>khát vọng<br />tự do</figcaption>
+                </figure>
+              </div>
+              <p class="lede">Từ kiếp nô lệ, con người vùng lên giành lấy <span class="mark">tự do</span>.</p>
+            </div>
+          </div>
+        </div>
+        <div class="banner claim" style="--bw: 1100">
+          <div class="banner-body">
+            <small>Điểm gặp gỡ · tư tưởng và cảm hứng sáng tác</small>
+            <p class="gilt">Cùng phản ánh hiện thực đau khổ, thể hiện giá trị nhân đạo sâu sắc</p>
+            <p class="gilt">Đều khẳng định phẩm giá, sức sống và khát vọng hạnh phúc, tự do</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 28 · V.2 Nét độc đáo (1): tình huống, đề tài khai thác, điều nổi bật -->
+    <section class="slide spread">
+      <div class="book-open">
+        <div class="half l">
+          <div class="board leather"></div>
+          <div class="page l">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">V · Đánh giá · Nét độc đáo</p>
+              <p class="work">Vợ nhặt <span>nét riêng</span></p>
+              <figure class="plate" style="--h: 210; --pos: 50% 40%">
+                <img src="img/vn-nhat-vo.jpg" alt="Minh hoạ: Tràng đãi người đàn bà ăn bánh đúc ở chợ" />
+              </figure>
+              <dl class="defs">
+                <div><dt>Tình huống độc đáo</dt><dd><span class="kw">“Nhặt vợ” giữa nạn đói</span></dd></div>
+                <div><dt>Nổi bật</dt><dd>Vẻ đẹp của tình người, tình gia đình, đặc biệt là <span class="mark">sự cưu mang</span> giữa những con người nghèo khổ.</dd></div>
+              </dl>
+            </div>
+          </div>
+        </div>
+        <div class="half r">
+          <div class="board leather"></div>
+          <div class="page r">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">V · Đánh giá · Nét độc đáo</p>
+              <p class="work">Vợ chồng A Phủ <span>nét riêng</span></p>
+              <figure class="plate" style="--h: 210; --pos: 40% 50%">
+                <img src="img/ap-than-quyen.jpg" alt="Minh hoạ: Mị quỳ trước bàn thờ ma nhà thống lí, thầy cúng và Pá Tra ngồi bên" />
+              </figure>
+              <dl class="defs">
+                <div><dt>Khai thác</dt><dd>Cuộc sống người dân miền núi Tây Bắc dưới áp bức của <span class="kw">cường quyền, thần quyền</span></dd></div>
+                <div><dt>Nổi bật</dt><dd>Quá trình <span class="mark">thức tỉnh và tự giải phóng</span> của Mị và A Phủ.</dd></div>
+              </dl>
+            </div>
+          </div>
+        </div>
+        <p class="seal">Độc đáo</p>
+      </div>
+    </section>
+
+    <!-- 29 · V.2 Nét độc đáo (2): niềm hy vọng / con đường cách mạng, phong cách -->
+    <section class="slide spread">
+      <div class="book-open">
+        <div class="half l">
+          <div class="board leather"></div>
+          <div class="page l">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">V · Đánh giá · Nét độc đáo</p>
+              <p class="work">Vợ nhặt <span>nét riêng</span></p>
+              <p class="label">Niềm hy vọng</p>
+              <div class="tri">
+                <figure>
+                  <div class="medal"><img src="img/vn-chao-cam.jpg" alt="Minh hoạ: bữa cơm ngày đói với nồi cháo cám" style="--pos: 40% 60%" /></div>
+                  <figcaption>bữa cơm<br />ngày đói</figcaption>
+                </figure>
+                <figure>
+                  <div class="medal"><img src="img/vn-co-do.jpg" alt="Minh hoạ: Tràng nhìn về phía đoàn người đói đi theo lá cờ đỏ trên đê" style="--pos: 72% 40%" /></div>
+                  <figcaption>lá cờ đỏ</figcaption>
+                </figure>
+                <figure>
+                  <div class="medal"><img src="img/pha-kho-thoc-1945.jpg" alt="Người dân phá kho thóc Nhật năm 1945" style="--pos: 50% 40%" /></div>
+                  <figcaption>đoàn người phá<br />kho thóc Nhật</figcaption>
+                </figure>
+              </div>
+              <p class="label">Phong cách</p>
+              <ul class="stamps"><li>mộc mạc</li><li>chân thực</li><li>gần gũi</li><li>giàu tình cảm</li></ul>
+            </div>
+          </div>
+        </div>
+        <div class="half r">
+          <div class="board leather"></div>
+          <div class="page r">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">V · Đánh giá · Nét độc đáo</p>
+              <p class="work">Vợ chồng A Phủ <span>nét riêng</span></p>
+              <figure class="plate" style="--h: 228; --pos: 45% 45%">
+                <img src="img/ap-du-kich.jpg" alt="Minh hoạ: Mị và A Phủ ở Phiềng Sa gặp cán bộ, A Phủ nhận khẩu súng trở thành du kích" />
+              </figure>
+              <p class="lede">Gắn số phận cá nhân với <span class="mark">con đường đến với cách mạng</span>.</p>
+              <p class="label">Phong cách</p>
+              <ul class="stamps"><li>giàu chất hiện thực</li><li>am hiểu phong tục miền núi</li><li>miêu tả tâm lí tinh tế</li></ul>
+            </div>
+          </div>
+        </div>
+        <p class="seal">Độc đáo</p>
+      </div>
+    </section>
+
+    <!-- 30 · V.3 Giá trị và sức sống (cả hai tác phẩm) -->
+    <section class="slide spread">
+      <div class="book-open">
+        <div class="half l">
+          <div class="board leather"></div>
+          <div class="page l shared">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">V · Đánh giá · Giá trị và sức sống</p>
+              <p class="work">Cả hai tác phẩm <span>giá trị hiện thực</span></p>
+              <p class="kw big">Sâu sắc</p>
+              <div class="pair">
+                <figure>
+                  <div class="medal"><img src="img/vn-nga-ra.jpg" alt="" style="--pos: 50% 60%" /></div>
+                  <figcaption>nạn đói<br />năm 1945</figcaption>
+                </figure>
+                <i>+</i>
+                <figure>
+                  <div class="medal"><img src="img/ap-phat-va.jpg" alt="" style="--pos: 45% 50%" /></div>
+                  <figcaption>ách áp bức<br />ở Tây Bắc</figcaption>
+                </figure>
+              </div>
+              <p class="lede" style="text-align: center">Giúp người đọc hiểu về <span class="mark">những giai đoạn đau khổ</span> của người lao động.</p>
+            </div>
+          </div>
+        </div>
+        <div class="half r">
+          <div class="board leather"></div>
+          <div class="page r shared">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">V · Đánh giá · Giá trị và sức sống</p>
+              <p class="work">Cả hai tác phẩm <span>giá trị nhân đạo</span></p>
+              <p class="kw big">Bền vững</p>
+              <div class="pair">
+                <figure>
+                  <div class="medal"><img src="img/vn-me-don-dau.jpg" alt="" style="--pos: 45% 40%" /></div>
+                  <figcaption>tình yêu,<br />hạnh phúc</figcaption>
+                </figure>
+                <i>+</i>
+                <figure>
+                  <div class="medal"><img src="img/ap-cat-day.jpg" alt="" style="--pos: 50% 32%" /></div>
+                  <figcaption>phẩm giá,<br />khát vọng sống</figcaption>
+                </figure>
+              </div>
+              <p class="lede" style="text-align: center">Khẳng định <span class="mark">phẩm giá, tình yêu, khát vọng sống</span> và hạnh phúc của con người.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 31 · V.4 Đóng góp của hai tác giả -->
+    <section class="slide spread">
+      <div class="book-open">
+        <div class="half l">
+          <div class="board leather"></div>
+          <div class="page l">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">V · Đánh giá · Đóng góp</p>
+              <p class="work">Kim Lân <span>đóng góp</span></p>
+              <div class="laureate">
+                <div class="laurel">
+                  <svg viewBox="-140 -130 280 260" aria-hidden="true">
+                    <path class="draw" pathLength="1" d="M-28 120A116 124 0 0 1 -65 -103" />
+                    <path class="draw" pathLength="1" d="M28 120A116 124 0 0 0 65 -103" />
+                    <g class="fill-in"><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#8f7034" transform="translate(-43 115) rotate(-195)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#c9a862" transform="translate(-43 115) rotate(-119)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#8f7034" transform="translate(-71 98) rotate(-178)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#c9a862" transform="translate(-71 98) rotate(-102)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#8f7034" transform="translate(-94 73) rotate(-162)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#c9a862" transform="translate(-94 73) rotate(-86)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#8f7034" transform="translate(-109 42) rotate(-147)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#c9a862" transform="translate(-109 42) rotate(-71)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#8f7034" transform="translate(-116 9) rotate(-132)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#c9a862" transform="translate(-116 9) rotate(-56)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#8f7034" transform="translate(-113 -26) rotate(-117)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#c9a862" transform="translate(-113 -26) rotate(-41)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#8f7034" transform="translate(-102 -58) rotate(-102)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#c9a862" transform="translate(-102 -58) rotate(-26)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#8f7034" transform="translate(-83 -86) rotate(-86)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#c9a862" transform="translate(-83 -86) rotate(-10)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#8f7034" transform="translate(43 115) rotate(375)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#c9a862" transform="translate(43 115) rotate(299)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#8f7034" transform="translate(71 98) rotate(358)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#c9a862" transform="translate(71 98) rotate(282)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#8f7034" transform="translate(94 73) rotate(342)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#c9a862" transform="translate(94 73) rotate(266)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#8f7034" transform="translate(109 42) rotate(327)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#c9a862" transform="translate(109 42) rotate(251)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#8f7034" transform="translate(116 9) rotate(312)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#c9a862" transform="translate(116 9) rotate(236)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#8f7034" transform="translate(113 -26) rotate(297)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#c9a862" transform="translate(113 -26) rotate(221)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#8f7034" transform="translate(102 -58) rotate(282)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#c9a862" transform="translate(102 -58) rotate(206)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#8f7034" transform="translate(83 -86) rotate(266)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#c9a862" transform="translate(83 -86) rotate(190)" /><circle cy="126" r="6" fill="#7a1f2b" /></g>
+                  </svg>
+                  <div class="medal"><img src="img/kim-lan.jpg" alt="Chân dung nhà văn Kim Lân" style="--pos: 50% 60%" /></div>
+                </div>
+                <h3>Kim Lân</h3>
+              </div>
+              <ul class="merits">
+                <li>Cây bút xuất sắc viết về <span class="mark">nông thôn và người nông dân</span>.</li>
+                <li>Đem đến cách nhìn <span class="mark">nhân hậu, sâu sắc</span> về con người trong hoàn cảnh nghèo đói.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="half r">
+          <div class="board leather"></div>
+          <div class="page r">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content pg">
+              <p class="runhead">V · Đánh giá · Đóng góp</p>
+              <p class="work">Tô Hoài <span>đóng góp</span></p>
+              <div class="laureate">
+                <div class="laurel">
+                  <svg viewBox="-140 -130 280 260" aria-hidden="true">
+                    <path class="draw" pathLength="1" d="M-28 120A116 124 0 0 1 -65 -103" />
+                    <path class="draw" pathLength="1" d="M28 120A116 124 0 0 0 65 -103" />
+                    <g class="fill-in"><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#8f7034" transform="translate(-43 115) rotate(-195)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#c9a862" transform="translate(-43 115) rotate(-119)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#8f7034" transform="translate(-71 98) rotate(-178)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#c9a862" transform="translate(-71 98) rotate(-102)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#8f7034" transform="translate(-94 73) rotate(-162)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#c9a862" transform="translate(-94 73) rotate(-86)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#8f7034" transform="translate(-109 42) rotate(-147)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#c9a862" transform="translate(-109 42) rotate(-71)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#8f7034" transform="translate(-116 9) rotate(-132)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#c9a862" transform="translate(-116 9) rotate(-56)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#8f7034" transform="translate(-113 -26) rotate(-117)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#c9a862" transform="translate(-113 -26) rotate(-41)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#8f7034" transform="translate(-102 -58) rotate(-102)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#c9a862" transform="translate(-102 -58) rotate(-26)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#8f7034" transform="translate(-83 -86) rotate(-86)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#c9a862" transform="translate(-83 -86) rotate(-10)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#8f7034" transform="translate(43 115) rotate(375)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#c9a862" transform="translate(43 115) rotate(299)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#8f7034" transform="translate(71 98) rotate(358)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#c9a862" transform="translate(71 98) rotate(282)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#8f7034" transform="translate(94 73) rotate(342)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#c9a862" transform="translate(94 73) rotate(266)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#8f7034" transform="translate(109 42) rotate(327)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#c9a862" transform="translate(109 42) rotate(251)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#8f7034" transform="translate(116 9) rotate(312)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#c9a862" transform="translate(116 9) rotate(236)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#8f7034" transform="translate(113 -26) rotate(297)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#c9a862" transform="translate(113 -26) rotate(221)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#8f7034" transform="translate(102 -58) rotate(282)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#c9a862" transform="translate(102 -58) rotate(206)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#8f7034" transform="translate(83 -86) rotate(266)" /><path d="M0 0C5 -7 15 -8 22 0C15 8 5 7 0 0Z" fill="#c9a862" transform="translate(83 -86) rotate(190)" /><circle cy="126" r="6" fill="#7a1f2b" /></g>
+                  </svg>
+                  <div class="medal"><img src="img/to-hoai.jpg" alt="Chân dung nhà văn Tô Hoài" style="--pos: 50% 40%" /></div>
+                </div>
+                <h3>Tô Hoài</h3>
+              </div>
+              <ul class="merits">
+                <li>Đóng góp nổi bật: đưa <span class="mark">đời sống và văn hóa miền núi</span> vào văn học.</li>
+                <li>Thành công khi khám phá <span class="mark">sức sống và quá trình thức tỉnh</span> của con người.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 32 · Kết (gọi lại trang mở đầu) -->
+    <section class="slide spread">
+      <div class="book-open">
+        <div class="half l">
+          <div class="board leather"></div>
+          <div class="page l">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content finale">
+              <p class="runhead">Kết</p>
+              <p class="chapter">Kim Lân</p>
+              <p class="fleuron">❦</p>
+              <h2 class="title">Vợ nhặt</h2>
+              <p class="source">tình người · mái ấm · hy vọng</p>
+              <p class="hook">Giữa nạn đói, <em>tình người</em><br />vẫn thắp lên hy vọng.</p>
+              <p class="across">Hai cảnh đời,</p>
+            </div>
+          </div>
+        </div>
+        <div class="half r">
+          <div class="board leather"></div>
+          <div class="page r">
+            <div class="frame"><i></i><i></i><i></i><i></i></div>
+            <div class="content finale">
+              <p class="runhead">Kết</p>
+              <p class="chapter">Tô Hoài</p>
+              <p class="fleuron">❦</p>
+              <h2 class="title">Vợ chồng A Phủ</h2>
+              <p class="source">thức tỉnh · tự giải phóng · cách mạng</p>
+              <p class="hook">Giữa áp bức, con người<br /><em>tự giải phóng</em> chính mình.</p>
+              <p class="across">một khát vọng sống.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 33 · Bìa sau: trang phải gập qua gáy, sách khép lại -->
+    <section class="slide closes-book" data-out-ms="0" data-in-ms="1800">
+      <div class="book-open">
+        <div class="half l held" aria-hidden="true"></div>
+        <div class="leaf" aria-hidden="true">
+          <div class="leaf-face front r"></div>
+          <div class="leaf-face back cover-face back-face leather" data-from=".closes-book .back-cover"></div>
+        </div>
+        <div class="back-cover cover-face back-face leather">
+          <div class="spine"></div>
+          <div class="gilt-frame"><i></i><i></i><i></i><i></i></div>
+          <div class="cover-content">
+            <p class="cover-orn gilt">❦</p>
+            <p class="end-thanks gilt">Cảm ơn</p>
+            <div class="cover-rule"><i></i></div>
+            <p class="cover-sub gilt">thầy cô và các bạn<br />đã lắng nghe</p>
+            <p class="cover-topic">Vợ nhặt · Vợ chồng A Phủ</p>
+            <p class="cover-group gilt end-group">Nhóm 4</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/book.js"></script>
+  <script src="js/deck.js"></script>
+  <script src="js/erosion-glow.js"></script>
+</body>
+</html>
